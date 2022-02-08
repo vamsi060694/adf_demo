@@ -8,13 +8,13 @@
 		"ls_gen2Lake_accountKey": {
 			"value": ""
 		},
-		"ls_blob_sasUri": {
-			"value": ""
-		},
 		"ls_gen2Lake_properties_typeProperties_url": {
 			"value": "https://mygen2lakestorage.dfs.core.windows.net"
 		},
 		"ls_snowFlake_connectionString": {
+			"value": ""
+		},
+		"ls_blob_sasUri": {
 			"value": ""
 		}
 	}

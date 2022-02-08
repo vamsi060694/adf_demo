@@ -11,10 +11,6 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'ls_gen2Lake'"
 		},
-		"ls_blob_sasUri": {
-			"type": "secureString",
-			"metadata": "Secure string for 'sasUri' of 'ls_blob'"
-		},
 		"ls_gen2Lake_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://mygen2lakestorage.dfs.core.windows.net"
@@ -22,6 +18,10 @@
 		"ls_snowFlake_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'ls_snowFlake'"
+		},
+		"ls_blob_sasUri": {
+			"type": "secureString",
+			"metadata": "Secure string for 'sasUri' of 'ls_blob'"
 		},
 		"containerUri": {
 			"type": "string",
@@ -53,14 +53,14 @@
 					"ls_gen2Lake_accountKey": {
 						"value": "[parameters('ls_gen2Lake_accountKey')]"
 					},
-					"ls_blob_sasUri": {
-						"value": "[parameters('ls_blob_sasUri')]"
-					},
 					"ls_gen2Lake_properties_typeProperties_url": {
 						"value": "[parameters('ls_gen2Lake_properties_typeProperties_url')]"
 					},
 					"ls_snowFlake_connectionString": {
 						"value": "[parameters('ls_snowFlake_connectionString')]"
+					},
+					"ls_blob_sasUri": {
+						"value": "[parameters('ls_blob_sasUri')]"
 					}
 				}
 			},
