@@ -1,0 +1,98 @@
+{
+	"name": "gen2Lake_to_snowFlake",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"wildcardFileName": "*",
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SnowflakeSink",
+						"importSettings": {
+							"type": "SnowflakeImportCopyCommand"
+						}
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "ls_blob",
+							"type": "LinkedServiceReference"
+						},
+						"path": "temp"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CID",
+									"type": "Int16"
+								},
+								"sink": {
+									"name": "CID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "CNAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CNAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CLOCATIONS",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CLOCATIONS",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_gen2Lake",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_snowFlake",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2022-01-28T10:17:11Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
